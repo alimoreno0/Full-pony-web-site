@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
+  --font-display: "Fredoka", "Nunito", ui-rounded, system-ui, sans-serif;
+
+  --color-bg: var(--pony-bg);
+  --color-bg-warm: var(--pony-bg-warm);
+  --color-surface: var(--pony-surface);
+  --color-fg: var(--pony-fg);
+  --color-muted: var(--pony-muted);
+  --color-primary: var(--pony-primary);
+  --color-primary-fg: var(--pony-primary-fg);
+  --color-accent: var(--pony-accent);
+  --color-border: var(--pony-border);
+  --color-ring: var(--pony-primary);
+
+  --shadow-border: var(--pony-shadow-border);
+  --shadow-border-hover: var(--pony-shadow-border-hover);
+  --shadow-soft: var(--pony-shadow-soft);
+  --shadow-lift: var(--pony-shadow-lift);
+
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+}
+
+:root {
+  --pony-bg: #fbf3e8;
+  --pony-bg-warm: #f4e4d0;
+  --pony-surface: #fffaf4;
+  --pony-fg: #3a2718;
+  --pony-muted: #7a5c42;
+  --pony-primary: #c05621;
+  --pony-primary-fg: #fff8f0;
+  --pony-accent: #e08a45;
+  --pony-border: color-mix(in oklab, var(--pony-fg) 14%, transparent);
+  --pony-shadow-border:
+    0 0 0 1px color-mix(in oklab, var(--pony-fg) 8%, transparent),
+    0 1px 2px color-mix(in oklab, var(--pony-fg) 6%, transparent),
+    0 8px 24px color-mix(in oklab, var(--pony-fg) 6%, transparent);
+  --pony-shadow-border-hover:
+    0 0 0 1px color-mix(in oklab, var(--pony-fg) 12%, transparent),
+    0 4px 16px color-mix(in oklab, var(--pony-fg) 10%, transparent);
+  --pony-shadow-soft: 0 10px 30px color-mix(in oklab, var(--pony-fg) 10%, transparent);
+  --pony-shadow-lift: 0 22px 50px color-mix(in oklab, var(--pony-fg) 16%, transparent);
+  color-scheme: light;
+}
+
+.dark {
+  --pony-bg: #16100c;
+  --pony-bg-warm: #1e1610;
+  --pony-surface: #241a14;
+  --pony-fg: #f6e6d4;
+  --pony-muted: #c4a080;
+  --pony-primary: #e8904a;
+  --pony-primary-fg: #1a110c;
+  --pony-accent: #f0b36a;
+  --pony-border: color-mix(in oklab, var(--pony-fg) 16%, transparent);
+  --pony-shadow-border: 0 0 0 1px color-mix(in oklab, var(--pony-fg) 12%, transparent);
+  --pony-shadow-border-hover: 0 0 0 1px color-mix(in oklab, var(--pony-fg) 20%, transparent);
+  --pony-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --pony-shadow-lift: 0 22px 50px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--pony-bg);
+    color: var(--pony-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    line-height: 1.1;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--pony-primary);
+    color: var(--pony-primary-fg);
+  }
+}
+
+@keyframes pony-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pony-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-float {
+  animation: pony-float 4.5s ease-in-out infinite;
+}
+
+.marquee-track {
+  animation: pony-marquee 28s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-float,
+  .marquee-track {
+    animation: none;
+  }
+}
