@@ -11,7 +11,7 @@ export const SITE = {
   chainId: 4663,
   supply: "1,000,000,000",
   supplyShort: "1B",
-  creatorFee: "70%",
+  creatorFee: "1%",
   twitterUrl: null as string | null,
   telegramUrl: null as string | null,
   contractAddress: null as string | null,
