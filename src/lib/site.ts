@@ -12,8 +12,8 @@ export const SITE = {
   supply: "1,000,000,000",
   supplyShort: "1B",
   creatorFee: "1%",
-  twitterUrl: null as string | null,
-  telegramUrl: null as string | null,
+  twitterUrl: "https://x.com/Ponysfamily",
+  telegramUrl: "https://t.me/ponysfamily",
   contractAddress: null as string | null,
 } as const;
 
